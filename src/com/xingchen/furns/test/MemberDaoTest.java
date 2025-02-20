@@ -29,4 +29,10 @@ public class MemberDaoTest {
         }
 
     }
+   @Test
+    public void queryMemberByUsernameAndPassword() {
+       Member member = memberDao.queryMemberByUsernameAndPassword("admin", "admin");
+       System.out.println(member);
+
+    }
 }

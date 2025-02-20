@@ -30,4 +30,10 @@ public class MemberServiceTest {
             System.out.println("注册用户失败");
         }
     }
+
+    @Test
+    public void login() {
+        Member member = new Member(null,"admin","admin", null);
+        System.out.println(memberService.login(member));
+    }
 }

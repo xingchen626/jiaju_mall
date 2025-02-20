@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<%--jsp文件头--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>韩顺平教育-家居网购</title>
-    <base href="http://localhost:8080/jiaju_mall/">
+
+<%--    <base href="http://localhost:8080/jiaju_mall/">--%>
+    <base href="<%=request.getContextPath() + "/"%>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
@@ -108,9 +111,13 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
-                                        <input type="text" name="user-name" placeholder="Username"/>
-                                        <input type="password" name="user-password" placeholder="Password"/>
+<%--                                    提示错误信息--%>
+                                    <span style="font-size: 18pt;font-weight: bold;float: right;color: #0DCAF0"></span>
+                                    ${requestScope.msg}
+
+                                    <form action="/jiaju_mall/loginServlet" method="post">
+                                        <input type="text" name="username" placeholder="Username"/>
+                                        <input type="password" name="password" placeholder="Password"/>
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox"/>
@@ -129,7 +136,7 @@
                                     <span class="errorMsg"
                                           style="float: right; font-weight: bold; font-size: 20pt; margin-left: 10px;"></span>
                                     <form action="/jiaju_mall/registerServlet" method="post">
-                                        <input type="text" id="username" name="username" placeholder="Username"/>
+                                        <input type="text" id="username" name="username" value="${requestScope.username}" placeholder="Username"/>
                                         <input type="password" id="password" name="password" placeholder="输入密码"/>
                                         <input type="password" id="repwd" name="repassword" placeholder="确认密码"/>
                                         <input name="email" id="email" placeholder="电子邮件" type="email"/>
