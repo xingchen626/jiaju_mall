@@ -7,7 +7,7 @@
     <title>韩顺平教育-家居网购</title>
 
 <%--    <base href="http://localhost:8080/jiaju_mall/">--%>
-    <base href="<%=request.getContextPath() + "/"%>">
+    <base href="<%=request.getContextPath() + "/" %>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
@@ -115,7 +115,8 @@
                                     <span style="font-size: 18pt;font-weight: bold;float: right;color: #0DCAF0"></span>
                                     ${requestScope.msg}
 
-                                    <form action="/jiaju_mall/loginServlet" method="post">
+                                    <form action="memberServlet" method="post">
+                                        <input type="hidden" name="action" value="login" />
                                         <input type="text" name="username" placeholder="Username"/>
                                         <input type="password" name="password" placeholder="Password"/>
                                         <div class="button-box">
@@ -135,7 +136,8 @@
                                 <div class="login-register-form">
                                     <span class="errorMsg"
                                           style="float: right; font-weight: bold; font-size: 20pt; margin-left: 10px;"></span>
-                                    <form action="/jiaju_mall/registerServlet" method="post">
+                                    <form action="memberServlet" method="post">
+                                        <input type="hidden" name="action" value="register" />
                                         <input type="text" id="username" name="username" value="${requestScope.username}" placeholder="Username"/>
                                         <input type="password" id="password" name="password" placeholder="输入密码"/>
                                         <input type="password" id="repwd" name="repassword" placeholder="确认密码"/>

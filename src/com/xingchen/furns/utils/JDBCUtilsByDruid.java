@@ -3,7 +3,6 @@ package com.xingchen.furns.utils;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +10,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 /**
- * @author 韩顺平
+ * @author 倪亮
  * @version 1.0
  * 基于druid数据库连接池的工具类
  */
@@ -23,6 +22,7 @@ public class JDBCUtilsByDruid {
     static {
         Properties properties = new Properties();
         try {
+            //Web工程  从out目录下查找
             //properties.load(new FileInputStream("src\\druid.properties"));
             properties.load(JDBCUtilsByDruid.class.getClassLoader()
                     .getResourceAsStream("druid.properties"));
@@ -38,7 +38,7 @@ public class JDBCUtilsByDruid {
         return ds.getConnection();
     }
 
-    //关闭连接, 老师再次强调： 在数据库连接池技术中，close 不是真的断掉连接
+    //关闭连接,在数据库连接池技术中，close 不是真的断掉连接
     //而是把使用的Connection对象放回连接池
     public static void close(ResultSet resultSet, Statement statement, Connection connection) {
 
