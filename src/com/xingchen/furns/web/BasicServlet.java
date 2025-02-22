@@ -1,13 +1,12 @@
 package com.xingchen.furns.web;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QDecoderStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 
 /**
@@ -16,7 +15,10 @@ import java.lang.reflect.Method;
  */
 public abstract class BasicServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+
+        req.setCharacterEncoding("utf-8");
+
         String action = req.getParameter("action");
 //        如果使用了模板模式+反射+动态绑定，要满足action的value和方法名一致
         //使用反射,获取当前对象的方法
@@ -32,4 +34,8 @@ public abstract class BasicServlet extends HttpServlet {
 
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
 }

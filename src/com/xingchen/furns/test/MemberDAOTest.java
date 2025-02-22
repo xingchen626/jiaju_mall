@@ -1,7 +1,7 @@
 package com.xingchen.furns.test;
 
-import com.xingchen.furns.dao.impl.MemberDao;
-import com.xingchen.furns.dao.impl.MemberDaoImpl;
+import com.xingchen.furns.dao.impl.MemberDAO;
+import com.xingchen.furns.dao.impl.MemberDAOImpl;
 import com.xingchen.furns.entity.Member;
 import org.junit.Test;
 
@@ -9,8 +9,8 @@ import org.junit.Test;
  * @Author: 倪亮
  * @Version: 1.0
  */
-public class MemberDaoTest {
-    private MemberDao memberDao = new MemberDaoImpl();
+public class MemberDAOTest {
+    private MemberDAO memberDao = new MemberDAOImpl();
     @Test
     public void queryMemberByUsername() {
         if(memberDao.queryMemberByUsername("admin") == null){

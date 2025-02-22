@@ -5,7 +5,6 @@ import com.xingchen.furns.service.impl.MemberService;
 import com.xingchen.furns.service.impl.MemberServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -65,9 +64,6 @@ public class MemberServlet extends BasicServlet {
 
 
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
-    }
+
 
 }

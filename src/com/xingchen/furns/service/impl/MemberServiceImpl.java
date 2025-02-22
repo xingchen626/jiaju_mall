@@ -1,7 +1,7 @@
 package com.xingchen.furns.service.impl;
 
-import com.xingchen.furns.dao.impl.MemberDao;
-import com.xingchen.furns.dao.impl.MemberDaoImpl;
+import com.xingchen.furns.dao.impl.MemberDAO;
+import com.xingchen.furns.dao.impl.MemberDAOImpl;
 import com.xingchen.furns.entity.Member;
 
 /**
@@ -9,7 +9,7 @@ import com.xingchen.furns.entity.Member;
  * @Version: 1.0
  */
 public class MemberServiceImpl implements MemberService {
-    private MemberDao memberDao = new MemberDaoImpl();
+    private MemberDAO memberDao = new MemberDAOImpl();
 
     @Override
     public boolean registerMember(Member member) {

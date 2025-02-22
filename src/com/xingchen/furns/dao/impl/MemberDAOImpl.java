@@ -6,7 +6,7 @@ import com.xingchen.furns.entity.Member;
  * @Author: 倪亮
  * @Version: 1.0
  */
-public class MemberDaoImpl extends BasicDAO<Member> implements MemberDao {
+public class MemberDAOImpl extends BasicDAO<Member> implements MemberDAO {
     /**
      * 通过用户名返回对应的Member
      * @param username 用户名
