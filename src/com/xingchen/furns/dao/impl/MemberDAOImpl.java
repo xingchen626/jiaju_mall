@@ -1,5 +1,7 @@
 package com.xingchen.furns.dao.impl;
 
+import com.xingchen.furns.dao.BasicDAO;
+import com.xingchen.furns.dao.MemberDAO;
 import com.xingchen.furns.entity.Member;
 
 /**

@@ -18,4 +18,14 @@ public class DataUtils {
         }
         return bean;
     }
+
+    public static int parseInt(String value, int defaultValue) {
+        try {
+             return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            System.out.println( value + "格式不正确");
+        }
+
+        return defaultValue;
+    }
 }

@@ -1,15 +1,16 @@
 package com.xingchen.furns.dao.impl;
 
+import com.xingchen.furns.dao.BasicDAO;
+import com.xingchen.furns.dao.FurnDAO;
 import com.xingchen.furns.entity.Furn;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
  * @Author: 倪亮
  * @Version: 1.0
  */
-public class FurnDAOImpl extends BasicDAO<Furn> implements FurnDAO{
+public class FurnDAOImpl extends BasicDAO<Furn> implements FurnDAO {
 
     @Override
     public List<Furn> queryFurns() {
@@ -23,6 +24,26 @@ public class FurnDAOImpl extends BasicDAO<Furn> implements FurnDAO{
                 "VALUES(NULL , ? , ? , ?, ? , ? , ?)";
         return update(sql, furn.getName(),furn.getMaker(),furn.getPrice(),furn.getSales(),
                 furn.getStock(),furn.getImgPath());
+    }
+
+    @Override
+    public int deleteFurnById(int id) {
+        String sql = "DELETE FROM furn WHERE `id` = ?";
+        return update(sql, id);
+    }
+
+    @Override
+    public int updateFurn(Furn furn) {
+          String sql = "UPDATE `furn` SET `name` =?, `maker` =?, `price` =?," +
+                  " `sales` =?, `stock` =?, `img_path` = ? " +
+                  "WHERE id =?";
+        return update(sql, furn.getName(),furn.getMaker(),furn.getPrice(),furn.getSales(),furn.getStock(),furn.getImgPath(),furn.getId());
+    }
+
+    @Override
+    public Furn queryFurnById(int id) {
+        String sql = "SELECT `id`, `name` , `maker`, `price`, `sales`, `stock`, `img_path` imgPath FROM furn WHERE `id` = ?";
+        return querySingle(sql,Furn.class,id);
     }
 
 

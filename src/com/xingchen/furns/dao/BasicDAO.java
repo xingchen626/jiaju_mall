@@ -1,4 +1,4 @@
-package com.xingchen.furns.dao.impl;
+package com.xingchen.furns.dao;
 
 
 import com.xingchen.furns.utils.JDBCUtilsByDruid;

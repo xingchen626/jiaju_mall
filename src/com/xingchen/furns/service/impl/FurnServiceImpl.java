@@ -1,10 +1,9 @@
 package com.xingchen.furns.service.impl;
 
-import com.xingchen.furns.dao.impl.FurnDAO;
+import com.xingchen.furns.dao.FurnDAO;
 import com.xingchen.furns.dao.impl.FurnDAOImpl;
 import com.xingchen.furns.entity.Furn;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,6 +21,21 @@ public class FurnServiceImpl implements FurnService {
     @Override
     public int add(Furn furn) {
         return furnDAO.addFurn(furn);
+    }
+
+    @Override
+    public int deleteFurnById(int id) {
+        return furnDAO.deleteFurnById(id);
+    }
+
+    @Override
+    public int updateFurn(Furn furn) {
+        return furnDAO.updateFurn(furn);
+    }
+
+    @Override
+    public Furn queryFurnById(int id) {
+        return furnDAO.queryFurnById(id);
     }
 
 

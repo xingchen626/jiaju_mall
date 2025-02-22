@@ -1,6 +1,6 @@
 package com.xingchen.furns.test;
 
-import com.xingchen.furns.dao.impl.FurnDAO;
+import com.xingchen.furns.dao.FurnDAO;
 import com.xingchen.furns.dao.impl.FurnDAOImpl;
 import com.xingchen.furns.entity.Furn;
 import org.junit.Test;

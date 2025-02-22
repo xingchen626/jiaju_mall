@@ -1,6 +1,6 @@
 package com.xingchen.furns.test;
 
-import com.xingchen.furns.dao.impl.MemberDAO;
+import com.xingchen.furns.dao.MemberDAO;
 import com.xingchen.furns.dao.impl.MemberDAOImpl;
 import com.xingchen.furns.entity.Member;
 import org.junit.Test;

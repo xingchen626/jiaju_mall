@@ -28,4 +28,19 @@ public class FurnServiceTest {
         Furn furn = new Furn(null, "小沙发", "顺平家居", new BigDecimal(999.9), 100, 10, "assets/images/product-image/16.jpg");
         furnService.add(furn);
     }
+
+    @Test
+    public void deleteFurnById() {
+        System.out.println(furnService.deleteFurnById(9));
+    }
+    @Test
+    public void queryFurnById() {
+        System.out.println(furnService.queryFurnById(1));
+    }
+
+    @Test
+    public void updateFurn() {
+        Furn furn = new Furn(4, "小沙发", "顺平家居", new BigDecimal(999.9), 100, 10, "assets/images/product-image/16.jpg");
+        System.out.println(furnService.updateFurn(furn));
+    }
 }

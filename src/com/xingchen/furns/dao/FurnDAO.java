@@ -1,4 +1,4 @@
-package com.xingchen.furns.dao.impl;
+package com.xingchen.furns.dao;
 
 import com.xingchen.furns.entity.Furn;
 
@@ -18,4 +18,10 @@ public interface FurnDAO {
      * @return
      */
     public int addFurn(Furn furn);
+
+    public int deleteFurnById(int id);
+
+    public int updateFurn(Furn furn);
+
+    public Furn queryFurnById(int id);
 }

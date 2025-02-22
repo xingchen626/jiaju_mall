@@ -16,4 +16,10 @@ public interface FurnService {
     public List<Furn> queryFurns();
 
     public int add(Furn furn);
+
+    public int deleteFurnById(int id);
+
+    public int updateFurn(Furn furn);
+
+    public Furn queryFurnById(int id);
 }
