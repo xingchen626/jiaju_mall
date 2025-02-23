@@ -106,6 +106,7 @@
                     <%--传id--%>
                     <input type="hidden" name="id" value="${requestScope.furn.id}">
                     <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="pageNo" value="${param.pageNo}">
                     <div class="table-content table-responsive cart-table-content">
                         <table>
                             <thead>

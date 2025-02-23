@@ -23,7 +23,7 @@ public class DataUtils {
         try {
              return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            System.out.println( value + "格式不正确");
+            System.out.println("格式不正确");
         }
 
         return defaultValue;

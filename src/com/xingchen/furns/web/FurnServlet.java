@@ -1,6 +1,7 @@
 package com.xingchen.furns.web;
 
 import com.xingchen.furns.entity.Furn;
+import com.xingchen.furns.entity.Page;
 import com.xingchen.furns.service.impl.FurnService;
 import com.xingchen.furns.service.impl.FurnServiceImpl;
 import com.xingchen.furns.utils.DataUtils;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @Author: 倪亮
@@ -21,11 +21,29 @@ public class FurnServlet extends BasicServlet {
     private FurnService furnService = new FurnServiceImpl();
 
 
+    /**
+     * 处理分页请求
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo = DataUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = DataUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+
+        Page<Furn> page = furnService.page(pageNo, pageSize);
+         req.setAttribute("page", page);
+
+         req.getRequestDispatcher("/views/manage/furn_manage.jsp").forward(req, resp);
+
+    }
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Furn furn = DataUtils.copyParamToBean(req.getParameterMap(), new Furn());
         furnService.updateFurn(furn);
-        resp.sendRedirect(req.getContextPath() + "/manage/furnServlet?action=list");
+        resp.sendRedirect(req.getContextPath() +
+                "/manage/furnServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
 
@@ -88,14 +106,14 @@ public class FurnServlet extends BasicServlet {
         Furn furn = DataUtils.copyParamToBean(req.getParameterMap(), new Furn());
          furnService.add(furn);
         //所以使用重定向
-        resp.sendRedirect(req.getContextPath() + "/manage/furnServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manage/furnServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
     protected void del(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = DataUtils.parseInt(req.getParameter("id"),0);
+        int id = DataUtils.parseInt(req.getParameter("id") , 0);
         furnService.deleteFurnById(id);
 
-        resp.sendRedirect(req.getContextPath() + "/manage/furnServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manage/furnServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/vendor/vendor.min.css"/>
     <link rel="stylesheet" href="assets/css/plugins/plugins.min.css"/>
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <script type="text/javascript"></script>
 </head>
 
 <body>
@@ -72,6 +73,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <form action="manage/furnServlet" method="post">
                     <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="pageNo" value="${param.pageNo}">
                     <div class="table-content table-responsive cart-table-content">
                         <table>
                             <thead>

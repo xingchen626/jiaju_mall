@@ -1,6 +1,7 @@
 package com.xingchen.furns.test;
 
 import com.xingchen.furns.entity.Furn;
+import com.xingchen.furns.entity.Page;
 import com.xingchen.furns.service.impl.FurnService;
 import com.xingchen.furns.service.impl.FurnServiceImpl;
 import org.junit.Test;
@@ -42,5 +43,11 @@ public class FurnServiceTest {
     public void updateFurn() {
         Furn furn = new Furn(4, "小沙发", "顺平家居", new BigDecimal(999.9), 100, 10, "assets/images/product-image/16.jpg");
         System.out.println(furnService.updateFurn(furn));
+    }
+
+    @Test
+    public void page() {
+        Page<Furn> page = furnService.page(2, 2);
+        System.out.println(page);
     }
 }

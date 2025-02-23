@@ -4,6 +4,7 @@ import com.xingchen.furns.dao.BasicDAO;
 import com.xingchen.furns.dao.FurnDAO;
 import com.xingchen.furns.entity.Furn;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,6 +45,18 @@ public class FurnDAOImpl extends BasicDAO<Furn> implements FurnDAO {
     public Furn queryFurnById(int id) {
         String sql = "SELECT `id`, `name` , `maker`, `price`, `sales`, `stock`, `img_path` imgPath FROM furn WHERE `id` = ?";
         return querySingle(sql,Furn.class,id);
+    }
+
+    @Override
+    public int getTotalRow() {
+        String sql = "SELECT COUNT(*) FROM `furn`";
+        return ((Number)queryScalar(sql)).intValue();
+    }
+
+    @Override
+    public List<Furn> getPageItems(int begin,int pageSize) {
+        String sql = "SELECT `id`, `name` , `maker`, `price`, `sales`, `stock`, `img_path` imgPath FROM furn LIMIT ?,? ";
+        return queryMulti(sql,Furn.class,begin,pageSize);
     }
 
 

@@ -61,7 +61,7 @@
                             <a href="#">后台管理</a>
                         </div>
                         <div class="header-bottom-set dropdown">
-                            <a href="views/manage/furn_add.jsp">添加家居</a>
+                            <a href="views/manage/furn_add.jsp?pageNo=${requestScope.page.pageNo}">添加家居</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             </thead>
                             <tbody>
 <%--                           取出furn集合 循环显示--%>
-                            <c:forEach items="${requestScope.furns}" var="furn">
+                        <c:forEach items="${requestScope.page.items}" var="furn">
                             <tr>
                                 <td class="product-thumbnail">
                                     <a href="#"><img class="img-responsive ml-3" src="${furn.imgPath}"
@@ -126,17 +126,45 @@
                                     ${furn.stock}
                                 </td>
                                 <td class="product-remove">
-                                    <a href="manage/furnServlet?action=showFurn&id=${furn.id}"><i class="icon-pencil"></i></a>
-                                    <a class="deleteCss" href="manage/furnServlet?action=del&id=${furn.id}"><i class="icon-close"></i></a>
+                                    <a href="manage/furnServlet?action=showFurn&id=${furn.id}&pageNo=${requestScope.page.pageNo}"><i class="icon-pencil"></i></a>
+                                    <a class="deleteCss" href="manage/furnServlet?action=del&id=${furn.id}&pageNo=${requestScope.page.pageNo}"><i class="icon-close"></i></a>
                                 </td>
                             </tr>
-                            </c:forEach>
+                        </c:forEach>
                             </tbody>
                         </table>
                     </div>
                 </form>
             </div>
         </div>
+        <!--  Pagination Area Start 分页导航条 -->
+        <div class="pro-pagination-style text-center mb-md-30px mb-lm-30px mt-6" data-aos="fade-up">
+            <ul>
+                <%--当前页如果 > 1 就显示上一页--%>
+                <c:if test="${requestScope.page.pageNo > 1}">
+                    <li><a href="manage/furnServlet?action=page&pageNo=${requestScope.page.pageNo-1}">上一页</a></li>
+                </c:if>
+
+                <c:set var="begin" value="1"/>
+                <c:set var="end" value="${requestScope.page.pageTotalCount}"/>
+                <c:forEach begin="${begin}" end="${end}" var="i">
+                    <%--如果i是当前页 就用class="active" 修饰--%>
+                    <c:if test="${i == requestScope.page.pageNo}">
+                        <li><a class="active" href="manage/furnServlet?action=page&pageNo=${i}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${i != requestScope.page.pageNo}">
+                        <li><a href="manage/furnServlet?action=page&pageNo=${i}">${i}</a></li>
+                    </c:if>
+
+                </c:forEach>
+                 <%--当前页如果 < 1 就显示下一页--%>
+                <c:if test="${requestScope.page.pageNo < requestScope.page.pageTotalCount}">
+                    <li><a href="manage/furnServlet?action=page&pageNo=${requestScope.page.pageNo+1}">下一页</a></li>
+                </c:if>
+                    <li><a href="#">共${requestScope.page.pageTotalCount}>页</a></li>
+            </ul>
+        </div>
+        <!--  Pagination Area End -->
     </div>
 </div>
 <!-- Cart Area End -->
